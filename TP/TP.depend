@@ -1,0 +1,65 @@
+# depslib dependency file v1.0
+1553654863 source:c:\users\apyr\desktop\primer-cuatrimestre---utnfra-en-c\primer cuatrimestre - utnfra en c\tp\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Librerias/sumar.h"
+	"Librerias/restar.h"
+	"Librerias/dividir.h"
+	"Librerias/multiplicar.h"
+
+1553654139 source:c:\users\apyr\desktop\primer-cuatrimestre---utnfra-en-c\primer cuatrimestre - utnfra en c\tp\sumar.c
+
+1553654404 c:\users\apyr\desktop\primer-cuatrimestre---utnfra-en-c\primer cuatrimestre - utnfra en c\tp\sumar.h
+
+1553654577 source:c:\users\apyr\desktop\primer-cuatrimestre---utnfra-en-c\primer cuatrimestre - utnfra en c\tp\librerias\dividir.c
+
+1553654578 source:c:\users\apyr\desktop\primer-cuatrimestre---utnfra-en-c\primer cuatrimestre - utnfra en c\tp\librerias\multiplicar.c
+
+1553654677 source:c:\users\apyr\desktop\primer-cuatrimestre---utnfra-en-c\primer cuatrimestre - utnfra en c\tp\librerias\restar.c
+
+1553654139 source:c:\users\apyr\desktop\primer-cuatrimestre---utnfra-en-c\primer cuatrimestre - utnfra en c\tp\librerias\sumar.c
+
+1553654731 c:\users\apyr\desktop\primer-cuatrimestre---utnfra-en-c\primer cuatrimestre - utnfra en c\tp\librerias\restar.h
+
+1553654602 c:\users\apyr\desktop\primer-cuatrimestre---utnfra-en-c\primer cuatrimestre - utnfra en c\tp\librerias\dividir.h
+
+1553654602 c:\users\apyr\desktop\primer-cuatrimestre---utnfra-en-c\primer cuatrimestre - utnfra en c\tp\librerias\multiplicar.h
+
+1553654171 c:\users\apyr\desktop\primer-cuatrimestre---utnfra-en-c\primer cuatrimestre - utnfra en c\tp\librerias\sumar.h
+
+1553686182 source:c:\users\alumno\desktop\primer-cuatrimestre---utnfra-en-c\primer cuatrimestre - utnfra en c\tp\librerias\dividir.c
+
+1553686182 source:c:\users\alumno\desktop\primer-cuatrimestre---utnfra-en-c\primer cuatrimestre - utnfra en c\tp\librerias\multiplicar.c
+
+1553686182 source:c:\users\alumno\desktop\primer-cuatrimestre---utnfra-en-c\primer cuatrimestre - utnfra en c\tp\librerias\restar.c
+
+1553686182 source:c:\users\alumno\desktop\primer-cuatrimestre---utnfra-en-c\primer cuatrimestre - utnfra en c\tp\librerias\sumar.c
+
+1553697923 source:c:\users\alumno\desktop\primer-cuatrimestre---utnfra-en-c\primer cuatrimestre - utnfra en c\tp\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Librerias/calculadora.h"
+
+1553686182 c:\users\alumno\desktop\primer-cuatrimestre---utnfra-en-c\primer cuatrimestre - utnfra en c\tp\librerias\sumar.h
+
+1553686182 c:\users\alumno\desktop\primer-cuatrimestre---utnfra-en-c\primer cuatrimestre - utnfra en c\tp\librerias\restar.h
+
+1553686182 c:\users\alumno\desktop\primer-cuatrimestre---utnfra-en-c\primer cuatrimestre - utnfra en c\tp\librerias\dividir.h
+
+1553686182 c:\users\alumno\desktop\primer-cuatrimestre---utnfra-en-c\primer cuatrimestre - utnfra en c\tp\librerias\multiplicar.h
+
+1553686730 c:\users\alumno\desktop\primer-cuatrimestre---utnfra-en-c\primer cuatrimestre - utnfra en c\tp\librerias\calculadora.h
+
+1553696699 source:c:\users\alumno\desktop\primer-cuatrimestre---utnfra-en-c\primer cuatrimestre - utnfra en c\tp\librerias\calculadora.c
+	<stdio.h>
+
+1553702807 source:c:\users\apyr\desktop\primer-cuatrimestre---utnfra-en-c-master\primer cuatrimestre - utnfra en c\tp\librerias\calculadora.c
+	<stdio.h>
+
+1553702932 source:c:\users\apyr\desktop\primer-cuatrimestre---utnfra-en-c-master\primer cuatrimestre - utnfra en c\tp\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Librerias\calculadora.h"
+
+1553670854 c:\users\apyr\desktop\primer-cuatrimestre---utnfra-en-c-master\primer cuatrimestre - utnfra en c\tp\librerias\calculadora.h
+
