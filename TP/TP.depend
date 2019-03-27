@@ -63,3 +63,13 @@
 
 1553670854 c:\users\apyr\desktop\primer-cuatrimestre---utnfra-en-c-master\primer cuatrimestre - utnfra en c\tp\librerias\calculadora.h
 
+1553726454 source:c:\users\apyr\desktop\tp\librerias\calculadora.c
+	<stdio.h>
+
+1553726454 source:c:\users\apyr\desktop\tp\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Librerias\calculadora.h"
+
+1553685254 c:\users\apyr\desktop\tp\librerias\calculadora.h
+
