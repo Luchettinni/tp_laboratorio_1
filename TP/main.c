@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 #include "Librerias\calculadora.h"
 
 int main()
@@ -20,81 +19,93 @@ int main()
 
 
 
-    while (opcion != 5) {
-
-        printf("\n-----para realizar una operacion, introduzca uno de los siguientes numeros-----\n1) Ingresar primer operando (A= %0.2f)\n2) Ingresar segundo operando (B= %0.2f)\n3) Calcular todas las operaciones\n4) Informar resultados\n5) Salir\n", a, b );
-
+    do {
+        printf("-----para realizar una operacion, introduzca uno de los siguientes numeros-----\n1) Ingresar primer operando (A= %0.2f)\n2) Ingresar segundo operando (B= %0.2f)\n3) Calcular todas las operaciones\n   a)(A+B)\n   b)(A-B)\n   c)(A*B)\n   d)(A/B)\n   e)(!Ay!B)\n4) Informar resultados\n5) Salir\n", a, b );
         printf("\nque operacion desea realizar?: ");
+
         scanf("%d", &opcion);
-        fflush(stdin);
 
         switch (opcion)
+        {
+
+        case 1:
+
+            printf("\nIngrese el primer operando: ");
+            scanf("%f", &a);
+            break;
+
+        case 2:
+
+            printf("\nIngrese el segundo operando: ");
+            scanf("%f", &b);
+            break;
+
+        case 3:
+
+            rSumar = suma(a,b);
+            rRestar = restar(a,b);
+            rDividir = division(a, b);
+            rMultiplicar = multiplicacion(a, b);
+            rFactorialA = factorial(a);
+            rFactorialB = factorial(b);
+
+            hacerCalculos = 1;
+            printf("\n/// se calcularon todas las operaciones correctamente! /// \n\n");
+            break;
+
+        case 4:
+
+            if ( hacerCalculos == 1 )
             {
-                case 1:
 
-                    printf("\nIngrese el primer operando: ");
-                    scanf("%f", &a);
-                    fflush(stdin);
-                    break;
+                printf("\n///////////////////////\na)el resultado de A+B es: %f", rSumar);
 
-                case 2:
+                printf("\nb)el resultado de A-B es: %f", rRestar);
 
-                    printf("\nIngrese el segundo operando: ");
-                    scanf("%f", &b);
-                    fflush(stdin);
-                    break;
+                if (b == 0)
+                {
+                    printf("\nc)no se puede dividir por 0");
+                } else
+                {
+                    printf("\nc)el resultado de A/B es: %f", rDividir);
+                }
 
-                case 3:
-
-                    rSumar = suma(a,b);
-                    rRestar = restar(a,b);
-                    rDividir = division(a, b);
-                    rMultiplicar = multiplicacion(a, b);
-                    rFactorialA = factorial(a);
-                    rFactorialB = factorial(b);
-
-                    hacerCalculos = 1;
-                    printf("\n/// se realizaron los calculos para %f y %f correctamente ///\n", a, b);
-                    break;
-
-                case 4:
-
-                    if ( hacerCalculos == 1 )
-                    {
-
-                        printf("\n///////////////////////\n1)el resultado de A+B es: %f", rSumar);
-
-                        printf("\n2)el resultado de A-B es: %f", rRestar);
-
-                        if (b == 0)
-                        {
-                            printf("\n3)no se puede dividir por 0");
-                        } else
-                        {
-                            printf("\n3)el resultado de A/B es: %f", rDividir);
-                        }
-
-                        printf("\n4)el resultado de A*B es: %f", rMultiplicar );
-
-                        printf("\n5)el factorial de A es: %d y el factorial de B es %d\n///////////////////////\n", rFactorialA, rFactorialB);
-
-                    } else
-                    {
-                        printf("\nOops!, no se encontraron calculos realizados para mostrar\n\n");
-                    }
-                    break;
+                printf("\nd)el resultado de A*B es: %f", rMultiplicar );
 
 
-                case 5:
+                if ( a < 0 && b < 0 )
+                {
 
-                    break;
+                    printf("\ne)el factorial de un numero negativo en A y B no existe\n///////////////////////\n\n");
+                } else if ( a < 0 && b >= 0 )
+                {
+                    printf("\ne)el factorial del numero negativo en A no existe y el factorial de B es %d\n///////////////////////\n\n", rFactorialB);
+                } else if ( a >= 0 && b < 0 )
+                {
+                    printf("\ne)el factorial de A es %d y el factorial del numero negativo en B no existe\n///////////////////////\n\n", rFactorialA);
+                } else
+                {
+                    printf("\ne)el factorial de A es %d y el factorial de B es %d\n///////////////////////\n\n", rFactorialA, rFactorialB);
+                }
 
-                default:
-                    printf("\nEl comando ingresado es desconocido...\n\n");
-                    break;
 
+            } else
+            {
+                printf("\nOops!, no se encontraron calculos realizados para mostrar\n");
             }
-    }
+
+            break;
+
+            case 5:
+
+                break;
+
+            default:
+
+                printf("\nEl comando ingresado es desconocido...\n\n");
+                break;
+        }
+    } while (opcion != 5);
 
     return 0;
 }
