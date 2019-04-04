@@ -34,9 +34,9 @@ float multiplicacion(float x, float y);
  */
 float division(float x, float y);
 
-/** \brief Solicita 1 valor decimal y devuelve su factorial correspondiente.
+/** \brief Solicita 1 valor entero y devuelve su factorial correspondiente.
  *
- * \param float x Primer valor ingresado por el usuario.
+ * \param float x valor al que se espera sacar el factorial.
  * \return contador retorna el resultado del factorial de x.
  *
  */
