@@ -73,13 +73,18 @@
 
 1553685254 c:\users\apyr\desktop\tp\librerias\calculadora.h
 
-1554417354 source:c:\users\apyr\desktop\tp_laboratorio_1\tp\main.c
+1554424433 source:c:\users\apyr\desktop\tp_laboratorio_1\tp\main.c
 	<stdio.h>
 	<stdlib.h>
-	"Librerias\calculadora.h"
+	"calculadora.h"
 
-1554418000 c:\users\apyr\desktop\tp_laboratorio_1\tp\librerias\calculadora.h
+1554424290 c:\users\apyr\desktop\tp_laboratorio_1\tp\librerias\calculadora.h
 
 1554417354 source:c:\users\apyr\desktop\tp_laboratorio_1\tp\librerias\calculadora.c
+	<stdio.h>
+
+1554424290 c:\users\apyr\desktop\tp_laboratorio_1\tp\calculadora.h
+
+1554417354 source:c:\users\apyr\desktop\tp_laboratorio_1\tp\calculadora.c
 	<stdio.h>
 

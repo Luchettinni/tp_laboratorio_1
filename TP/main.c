@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "Librerias\calculadora.h"
+#include "calculadora.h"
 
 int main()
 {

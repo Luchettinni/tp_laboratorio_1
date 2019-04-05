@@ -1,4 +1,4 @@
-/** \brief Solicita 2 valores decimales y devuelve la suma de los mismos
+/** \brief realiza la suma entre dos numeros decimales
  *
  * \param float x Primer valor ingresado por el usuario.
  * \param float y Segundo valor ingresado por el usuario.
@@ -7,7 +7,7 @@
  */
 float suma(float x, float y);
 
-/** \brief Solicita 2 valores decimales y devuelve la resta de los mismos
+/** \brief realiza la resta entre dos numeros decimales
  *
  * \param float x Primer valor ingresado por el usuario.
  * \param float y Segundo valor ingresado por el usuario.
@@ -16,7 +16,7 @@ float suma(float x, float y);
  */
 float restar(float x, float y);
 
-/** \brief Solicita 2 valores decimales y devuelve la multiplicacion de los mismos
+/** \brief realiza la multiplicacion entre dos numeros decimales
  *
  * \param float x Primer valor ingresado por el usuario.
  * \param float y Segundo valor ingresado por el usuario.
@@ -25,7 +25,7 @@ float restar(float x, float y);
  */
 float multiplicacion(float x, float y);
 
-/** \brief Solicita 2 valores decimales y devuelve la division de los mismos
+/** \brief realiza la division entre dos numeros decimales
  *
  * \param float x Primer valor ingresado por el usuario.
  * \param float y Segundo valor ingresado por el usuario.
@@ -34,7 +34,7 @@ float multiplicacion(float x, float y);
  */
 float division(float x, float y);
 
-/** \brief Solicita 1 valor entero y devuelve su factorial correspondiente.
+/** \brief realiza el factorial de un numero entero.
  *
  * \param float x valor al que se espera sacar el factorial.
  * \return contador retorna el resultado del factorial de x.
