@@ -32,12 +32,15 @@ int main()
 
             printf("\nIngrese el primer operando: ");
             scanf("%f", &a);
+            hacerCalculos = 0;
             break;
+
 
         case 2:
 
             printf("\nIngrese el segundo operando: ");
             scanf("%f", &b);
+            hacerCalculos = 0;
             break;
 
         case 3:
@@ -91,7 +94,7 @@ int main()
 
             } else
             {
-                printf("\nOops!, no se encontraron calculos realizados para mostrar\n");
+                printf("\nOops!, deberias hacer los calculos antes de pedir los resultados...\n\n");
             }
 
             break;
