@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1558314382 source:c:\users\apyr\desktop\tp_laboratorio_2\tp_laboratorio_2\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Employee.h"
+	"Input.h"
+
+1558313568 c:\users\apyr\desktop\tp_laboratorio_2\tp_laboratorio_2\employee.h
+
+1558313600 source:c:\users\apyr\desktop\tp_laboratorio_2\tp_laboratorio_2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Employee.h"
+	"Input.h"
+
+1558312573 source:c:\users\apyr\desktop\tp_laboratorio_2\tp_laboratorio_2\input.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Input.h"
+
+1558312153 c:\users\apyr\desktop\tp_laboratorio_2\tp_laboratorio_2\input.h
+
