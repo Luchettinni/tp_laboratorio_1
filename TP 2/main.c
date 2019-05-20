@@ -19,37 +19,27 @@
 
 int main()
 {
-    sEmployee employee2[TAM_EMPLEADOS] = {
-    {1,"luciano", "aranda", 20000, 2, 0},
-    {2,"amber", "wakefield", 45000, 1, 0},
-    {3,"luciano", "aranda", 30000, 2, 0},
-    {5,"thomas", "alvarez", 15000, 1, 0},
-    {6,"brenda", "frias", 8000, 2, 0},
-    {7,"kevin", "ahumada", 60000, 3, 0},
-    {8,"luciano", "aranda", 20000, 2, 0},
-    {4,"amber", "wakefield", 45000, 3, 0}
-    };
-
     sEmployee employee[TAM_EMPLEADOS];
-
-    initEmployees(employee, TAM_EMPLEADOS);
-
-    for (int i = 0; i < 8; i++)
-    {
-        employee[i] = employee2[i];
-    }
-
     sEmployee employeeToLoad;
 
-    int idIncremental = 0;
+    initEmployees(employee, TAM_EMPLEADOS);
+    initEstruct(employee, TAM_EMPLEADOS);
+    //initEmployees(employee, TAM_EMPLEADOS);
+
+    int idIncremental;
+    int cantidadDeEmpleados;
+
     int opcion = 0;
+
     int id;
     int indice;
+
+    findLastId(employee,TAM_EMPLEADOS, &idIncremental);
 
     do
     {
         system("cls");
-        idIncremental = findLastId(employee,TAM_EMPLEADOS);
+        findLastId(employee,TAM_EMPLEADOS, &cantidadDeEmpleados);
         switch (menuPrincipal())
         {
             case 1:
@@ -59,14 +49,14 @@ int main()
                 getInt( &employeeToLoad.sector, "Ingrese el sector: ", "ERROR: ese sector no existe...", 1,5);
                 idIncremental++;
 
-                addEmployees(employee, TAM_EMPLEADOS, idIncremental, employeeToLoad.name, employeeToLoad.lastName, employeeToLoad.salary, employeeToLoad.sector );
+                addEmployee(employee, TAM_EMPLEADOS, idIncremental, employeeToLoad.name, employeeToLoad.lastName, employeeToLoad.salary, employeeToLoad.sector );
 
                 printf("\n\nalta realizada correctamente\n\n");
                 system("pause");
                 break;
 
             case 2:
-                if ( idIncremental != 0)
+                if ( cantidadDeEmpleados != 0)
                 {
                     getInt( &id, "\nIngrese el id del empleado que desea modificar: ", "ERROR: ese empleado no existe...", 1,TAM_EMPLEADOS);
                     indice = findEmployeeById(employee,TAM_EMPLEADOS,id);
@@ -120,7 +110,7 @@ int main()
                 break;
 
             case 3:
-                if ( idIncremental != 0)
+                if ( cantidadDeEmpleados != 0)
                 {
                     getInt( &id, "\nIngrese el id del empleado que desea dar de baja: ", "ERROR: ese empleado no existe...", 1,TAM_EMPLEADOS);
                     removeEmployee(employee,TAM_EMPLEADOS,id);
@@ -134,7 +124,7 @@ int main()
                 break;
 
             case 4:
-                if ( idIncremental != 0)
+                if ( cantidadDeEmpleados != 0)
                 {
                     do
                     {

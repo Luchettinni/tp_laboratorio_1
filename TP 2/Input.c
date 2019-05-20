@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <conio.h>
 
 #ifndef Input_H_INCLUDED
 #define Input_H_INCLUDED
@@ -104,8 +105,9 @@ void getAnswer (char* respuesta, char mensaje[])
 {
     printf(mensaje);
     *respuesta = getche();
+    *respuesta = tolower(*respuesta);
 
-    while(tolower(*respuesta) != 's' && tolower(*respuesta) != 'n')
+    while(*respuesta != 's' && *respuesta != 'n')
     {
         printf("\n\nEsa respuesta es invalida intente nuevamente...\n\n");
         printf(mensaje);

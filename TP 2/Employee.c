@@ -27,7 +27,7 @@ void initEmployees(sEmployee listOfEmployees[], int lenght)
     }
 }
 
-void addEmployees( sEmployee employee[], int lenght, int id, char name[], char lastName[],float salary,int sector )
+void addEmployee( sEmployee employee[], int lenght, int id, char name[], char lastName[],float salary,int sector )
 {
     int indice = -1;
 
@@ -156,51 +156,6 @@ int findEmployeeById(sEmployee employee[], int lenght,int id)
     return indice;
 }
 
-int findLastId(sEmployee employee[], int length)
-{
-    int lastId = 0;
-
-    for (int j = 0; j < length; j++)
-    {
-        if ( employee[j].isEmpty == 0 && employee[j].id > lastId)
-        {
-            lastId = employee[j].id;
-        }
-    }
-    return lastId;
-}
-
-void informarTotalYProm (sEmployee employee[], int tam)
-{
-    int contadorDeSalarios = 0;
-    float salario = 0;
-    float promedio = 0;
-
-    for (int i = 0; i < tam; i++) // recorro todos los salarios
-    {
-        if (employee[i].isEmpty == 0)
-        {
-                contadorDeSalarios++;
-                salario += employee[i].salary;
-        }
-    }
-
-    printf("\nHay %d salarios, que suman un total de $%.f\n", contadorDeSalarios, salario);
-    promedio = salario / contadorDeSalarios;
-    printf("el promedio de los salarios es de = %.2f\n\n", promedio);
-
-    contadorDeSalarios = 0;
-    for (int i = 0; i < tam; i++)
-    {
-        if (employee[i].salary > promedio && employee[i].isEmpty == 0)
-        {
-            contadorDeSalarios++;
-        }
-    }
-    printf("la cantidad de salarios que superaron el promedio son: %d salarios...\n\n", contadorDeSalarios);
-
-}
-
 // -------------------------------------------------------------------------------------------
 
 int menuPrincipal ()
@@ -252,4 +207,69 @@ int menuDeInformes ()
     scanf("%d", &opcion );
 
     return opcion;
+}
+
+// -------------------------------------------------------------------------------------------
+
+void findLastId(sEmployee employee[], int length, int* lastId)
+{
+    *lastId = 0;
+
+    for (int j = 0; j < length; j++)
+    {
+        if ( employee[j].isEmpty == 0 && employee[j].id > *lastId)
+        {
+            *lastId = employee[j].id;
+        }
+    }
+}
+
+void informarTotalYProm (sEmployee employee[], int tam)
+{
+    int contadorDeSalarios = 0;
+    float salario = 0;
+    float promedio = 0;
+
+    for (int i = 0; i < tam; i++) // recorro todos los salarios
+    {
+        if (employee[i].isEmpty == 0)
+        {
+                contadorDeSalarios++;
+                salario += employee[i].salary;
+        }
+    }
+
+    printf("\nHay %d salarios, que suman un total de $%.f\n", contadorDeSalarios, salario);
+    promedio = salario / contadorDeSalarios;
+    printf("el promedio de los salarios es de = %.2f\n\n", promedio);
+
+    contadorDeSalarios = 0;
+    for (int i = 0; i < tam; i++)
+    {
+        if (employee[i].salary > promedio && employee[i].isEmpty == 0)
+        {
+            contadorDeSalarios++;
+        }
+    }
+    printf("la cantidad de salarios que superaron el promedio son: %d salarios...\n\n", contadorDeSalarios);
+
+}
+
+void initEstruct(sEmployee employee[], int tam)
+{
+    sEmployee employeeToLoad[] = {
+    {1,"luciano", "aranda", 20000, 2, 0},
+    {2,"amber", "wakefield", 45000, 1, 0},
+    {3,"luciano", "aranda", 30000, 2, 0},
+    {5,"thomas", "alvarez", 15000, 1, 0},
+    {6,"brenda", "frias", 8000, 2, 0},
+    {7,"kevin", "ahumada", 60000, 3, 0},
+    {8,"luciano", "aranda", 20000, 2, 0},
+    {4,"amber", "wakefield", 45000, 3, 0}
+    };
+
+    for (int i = 0; i < 8; i++)
+    {
+        employee[i] = employeeToLoad[i];
+    }
 }
