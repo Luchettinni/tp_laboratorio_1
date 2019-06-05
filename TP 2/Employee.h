@@ -16,7 +16,7 @@ typedef struct{
  * \param lenght es el tamañano del array de empleados
  * \return void
  */
-void initEmployees(sEmployee listOfEmployees[], int lenght);
+int initEmployees(sEmployee* listOfEmployees, int lenght);
 
 /** \brief Agrega en un array de empleados existente los valores recibidos como parámetro en la primer posición libre
  * \param listOfEmployees es el array de empleados
@@ -29,14 +29,14 @@ void initEmployees(sEmployee listOfEmployees[], int lenght);
  * \return void
  */
 
-void addEmployee( sEmployee employee[], int lenght, int id, char name[], char lastName[],float salary,int sector );
+int addEmployee(sEmployee* employee, int lenght, int id, char name[], char lastName[],float salary,int sector );
 
 /** \brief muestra en pantalla cada elemento del array de empleados
  * \param employee es el array de empleados
  * \param lenght es el tamañano del array de empleados
  * \return void
  */
-void printEmployees(sEmployee employee[], int length);
+int printEmployees(sEmployee* employee, int length);
 
 /** \brief ordena el array de empleados de manera ascendente si el argumento "order" es 1, y decendente si es 0
  * \param employee es el array de empleados
@@ -44,7 +44,7 @@ void printEmployees(sEmployee employee[], int length);
  * \param order [1] indica ordenamiento ascendente - [0] indica ordenamiento decendente
  * \return void
  */
-void sortEmployees(sEmployee employee[], int lenght, int order);
+int sortEmployees(sEmployee* employee, int lenght, int order);
 
 /** \brief elimina a un empleado por id ( rellena isEmpty con un 1 )
  * \param employee es el array de empleados
@@ -52,7 +52,7 @@ void sortEmployees(sEmployee employee[], int lenght, int order);
  * \param id int
  * \return void
  */
-void removeEmployee(sEmployee employee[], int lenght, int id);
+int removeEmployee(sEmployee* employee, int lenght, int id);
 
 /** \brief Busca un empleado recibiendo como parámetro de búsqueda su Id.
  * \param employee es el array de empleados
@@ -60,7 +60,7 @@ void removeEmployee(sEmployee employee[], int lenght, int id);
  * \param id int
  * \return retorna el indice del array en el que se encuentra el empleado solicitado o retorna -1 si no logra encontrarlo.
  */
-int findEmployeeById(sEmployee employee[], int lenght,int id);
+int findEmployeeById(sEmployee* employee, int lenght,int id);
 
 /** \brief
  * \param
@@ -92,8 +92,8 @@ int menuDeInformes ();
 //---------------------------------------------------------------------------------------------------
 // FUNCIONES PROPIAS
 
-void findLastId(sEmployee employee[], int length, int* lastId);
+int findLastId(sEmployee* employee, int length, int* lastId);
 
-void informarTotalYProm (sEmployee employee[], int tam);
+int informarTotalYProm (sEmployee* employee, int tam);
 
-void initEstruct(sEmployee employee[], int tam);
+int initEstruct(sEmployee* employee, int tam);

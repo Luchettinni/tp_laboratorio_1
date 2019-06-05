@@ -11,6 +11,8 @@
 
 #endif // Input_H_INCLUDED
 
+// BIBLIOTECAS INPUT, POR LUCHETTINNI-DEV ( VERSION 4.0 )
+
 void getInt(int* input, char message[], char eMessage[], int lowLimit, int hiLimit)
 {
     printf(message);
@@ -112,5 +114,6 @@ void getAnswer (char* respuesta, char mensaje[])
         printf("\n\nEsa respuesta es invalida intente nuevamente...\n\n");
         printf(mensaje);
         *respuesta = getche();
+        *respuesta = tolower(*respuesta);
     }
 }

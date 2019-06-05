@@ -19,12 +19,19 @@
 
 int main()
 {
-    sEmployee employee[TAM_EMPLEADOS];
-    sEmployee employeeToLoad;
+    sEmployee* employee = (sEmployee*) malloc( TAM_EMPLEADOS * sizeof(sEmployee) ); // busco espacio en memoria para 100 empleados
+
+    sEmployee* employeeToLoad = (sEmployee*) malloc( sizeof(sEmployee) );
+
+    if (employee == NULL)
+    {
+        printf("ERROR: no se pudo conseguir espacio para trabajar con datos");
+        system("pause");
+        exit(EXIT_FAILURE);
+    }
 
     initEmployees(employee, TAM_EMPLEADOS);
     initEstruct(employee, TAM_EMPLEADOS);
-    //initEmployees(employee, TAM_EMPLEADOS);
 
     int idIncremental;
     int cantidadDeEmpleados;
@@ -43,13 +50,13 @@ int main()
         switch (menuPrincipal())
         {
             case 1:
-                getString( employeeToLoad.name, "Ingrese su nombre: ", "Error, el nombre es demasiado corto o demasiado largo", 2, 51 );
-                getString( employeeToLoad.lastName, "Ingrese su apellido: ", "Error, el apellido es demasiado corto o demasiado largo", 2, 51 );
-                getFloat( &employeeToLoad.salary, "Ingrese el salario: ", "ERROR: salario fuera de rango...", 8000,80000);
-                getInt( &employeeToLoad.sector, "Ingrese el sector: ", "ERROR: ese sector no existe...", 1,5);
+                getString( employeeToLoad->name, "Ingrese su nombre: ", "Error, el nombre es demasiado corto o demasiado largo", 2, 51 );
+                getString( employeeToLoad->lastName, "Ingrese su apellido: ", "Error, el apellido es demasiado corto o demasiado largo", 2, 51 );
+                getFloat( &employeeToLoad->salary, "Ingrese el salario: ", "ERROR: salario fuera de rango...", 8000,80000);
+                getInt( &employeeToLoad->sector, "Ingrese el sector: ", "ERROR: ese sector no existe...", 1,5);
                 idIncremental++;
 
-                addEmployee(employee, TAM_EMPLEADOS, idIncremental, employeeToLoad.name, employeeToLoad.lastName, employeeToLoad.salary, employeeToLoad.sector );
+                addEmployee(employee, TAM_EMPLEADOS, idIncremental, employeeToLoad->name, employeeToLoad->lastName, employeeToLoad->salary, employeeToLoad->sector );
 
                 printf("\n\nalta realizada correctamente\n\n");
                 system("pause");
@@ -73,20 +80,20 @@ int main()
                             switch(menuModificar(employee, &id, TAM_EMPLEADOS))
                             {
                                 case 1:
-                                    getString( employee[indice].name, "Ingrese su nombre: ", "Error, el nombre es demasiado corto o demasiado largo", 2, 51 );
+                                    getString( (employee+indice)->name, "Ingrese su nombre: ", "Error, el nombre es demasiado corto o demasiado largo", 2, 51 );
                                     system("pause");
                                     break;
 
                                 case 2:
-                                    getString( employee[indice].lastName, "Ingrese su apellido: ", "Error, el apellido es demasiado corto o demasiado largo", 2, 51 );
+                                    getString( (employee+indice)->lastName, "Ingrese su apellido: ", "Error, el apellido es demasiado corto o demasiado largo", 2, 51 );
                                     break;
 
                                 case 3:
-                                    getFloat( &employee[indice].salary, "Ingrese el salario: ", "ERROR: salario fuera de rango...", 8000,80000);
+                                    getFloat( &(employee+indice)->salary, "Ingrese el salario: ", "ERROR: salario fuera de rango...", 8000,80000);
                                     break;
 
                                 case 4:
-                                    getInt( &employee[indice].sector, "Ingrese el sector: ", "ERROR: ese sector no existe...", 1,5);
+                                    getInt( &(employee+indice)->sector, "Ingrese el sector: ", "ERROR: ese sector no existe...", 1,5);
                                     break;
 
                                 case 5:
@@ -132,7 +139,7 @@ int main()
                         switch(menuDeInformes())
                         {
                             case 1:
-                                sortEmployees(employee, TAM_EMPLEADOS, 1);
+                                sortEmployees(employee, TAM_EMPLEADOS, 0);
                                 printEmployees(employee, TAM_EMPLEADOS);
                                 system("pause");
                                 break;
