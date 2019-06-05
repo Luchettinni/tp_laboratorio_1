@@ -97,7 +97,7 @@ int sortEmployees(sEmployee* employee, int lenght, int order)
                 {
                     if ( stricmp((employee+i)->name, (employee+j)->name) > 0 )
                     {
-                        *auxEmp = *(employee+i);
+                        auxEmp = employee+i;
                         *(employee+i) = *(employee+j);
                         *(employee+j) = *auxEmp;
                     }
@@ -111,19 +111,22 @@ int sortEmployees(sEmployee* employee, int lenght, int order)
                 }
                 else // si el orden es decendente...
                 {
+
                     if ( stricmp( (employee+i)->name, (employee+j)->name) < 0)
                     {
-                        *auxEmp = *(employee+i);
+                        printf("%x\n", auxEmp);
+                        auxEmp = employee+i;
                         *(employee+i) = *(employee+j);
                         *(employee+j) = *auxEmp;
                     }
 
                     if ( (employee+i)->sector < (employee+j)->sector)
                     {
-                        *auxEmp = *(employee+i);
+                        auxEmp = employee+i;
                         *(employee+i) = *(employee+j);
                         *(employee+j) = *auxEmp;
                     }
+
                 }
             }
         }

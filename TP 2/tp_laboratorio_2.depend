@@ -73,3 +73,28 @@
 	"Employee.h"
 	"Input.h"
 
+1559735150 source:c:\users\alumno\desktop\tp_laboratorio_1\tp 2\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Employee.h"
+	"Input.h"
+
+1559734388 c:\users\alumno\desktop\tp_laboratorio_1\tp 2\employee.h
+
+1559734388 c:\users\alumno\desktop\tp_laboratorio_1\tp 2\input.h
+
+1559734388 source:c:\users\alumno\desktop\tp_laboratorio_1\tp 2\input.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"Input.h"
+
+1559734951 source:c:\users\alumno\desktop\tp_laboratorio_1\tp 2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Employee.h"
+	"Input.h"
+

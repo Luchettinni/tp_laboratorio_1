@@ -1,6 +1,13 @@
 #include <stdlib.h>
 #include <stdio.h>
+
+#ifndef EMPLOYEE_H_INCLUDED
+#define EMPLOYEE_H_INCLUDED
+
 #include "Employee.h"
+
+#endif // EMPLOYEE_H_INCLUDED
+
 
 int employee_setSueldo(Employee* this,int sueldo)
 {
@@ -65,10 +72,10 @@ Employee* employee_new()
         newEmployee->sueldo = 0;
     }
 
-    return *newEmployee;
+    return newEmployee;
 }
 
-Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr)
+/*Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr)
 {
     int todoOK;
     Employee* newEmployee = (Employee*) malloc(sizeof(Employee));
@@ -89,5 +96,5 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
     }
 
 
-    return *newEmployee;
-}
+    return newEmployee;
+}*/

@@ -17,6 +17,8 @@
 
 #define TAM_EMPLEADOS 100
 
+// REVISAR SORT, NO ESTOY PASANDO DIRECCIONES DE MEMORIA, UN CAPO KEVIN xddxdxd
+
 int main()
 {
     sEmployee* employee = (sEmployee*) malloc( TAM_EMPLEADOS * sizeof(sEmployee) ); // busco espacio en memoria para 100 empleados
