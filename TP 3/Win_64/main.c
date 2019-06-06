@@ -23,7 +23,6 @@ int main()
     int option = 0;
 
     LinkedList* listaEmpleados = ll_newLinkedList();
-    Employee* emp;
 
     do
     {
@@ -42,13 +41,19 @@ int main()
 
         printf("\nque desea hacer?: ");
         scanf("%d", &option);
+
         switch(option)
         {
             case 1:
-                controller_loadFromText("data.csv",listaEmpleados);
-                emp = (Employee*) listaEmpleados;
-                printf("%p, %p\n", emp, (Employee*) listaEmpleados);
-                printf("nombre: %s", emp->nombre);
+                if ( controller_loadFromText("data.csv",listaEmpleados) )
+                {
+                   printf("\nOcurrio un error al intentar cargar los datos...\n\n");
+                }
+                else
+                {
+                    printf("\nse cargaron los datos satisfactoriamente!\n\n");
+                }
+
                 system("pause");
                 break;
 
@@ -65,12 +70,30 @@ int main()
                 break;
 
             case 6:
+                if ( controller_ListEmployee(listaEmpleados) )
+                {
+                    printf("\nERROR: no se encontraron datos para listar...\n\n");
+                }
+                else
+                {
+                    printf("\nSe imprimio la lista correctamente!\n\n");
+                }
+                system("pause");
                 break;
 
             case 7:
                 break;
 
             case 8:
+                if ( controller_saveAsText("data.csv", listaEmpleados) )
+                {
+                    printf("\nno se encontraron datos que guardar...\n\n");
+                }
+                else
+                {
+                    printf("\nse guardaron los datos satisfactoriamente!\n\n");
+                }
+                system("pause");
                 break;
 
             case 9:

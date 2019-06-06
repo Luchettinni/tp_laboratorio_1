@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include "string.h"
 
 #ifndef EMPLOYEE_H_INCLUDED
 #define EMPLOYEE_H_INCLUDED
@@ -8,6 +9,32 @@
 
 #endif // EMPLOYEE_H_INCLUDED
 
+
+int employee_setNombre(Employee* this,char* nombre)
+{
+    int todoOk = 0;
+
+    if( this != NULL && strlen(nombre) < 128 && strlen(nombre) > 0 )
+    {
+        strcpy(this->nombre, nombre);
+        todoOk = 1;
+    }
+
+    return todoOk;
+}
+
+int employee_setHorasTrabajadas(Employee* this,int horasTrabajadas)
+{
+    int todoOk = 0;
+
+    if( this != NULL && horasTrabajadas >0 && horasTrabajadas <=350 )
+    {
+        this->horasTrabajadas = horasTrabajadas;
+        todoOk = 1;
+    }
+
+    return todoOk;
+}
 
 int employee_setSueldo(Employee* this,int sueldo)
 {
@@ -64,6 +91,7 @@ int employee_getId(Employee* this,int* id)
 Employee* employee_new()
 {
     Employee* newEmployee = (Employee*) malloc(sizeof(Employee));
+
     if (newEmployee != NULL)
     {
         newEmployee->id = 0;
@@ -75,26 +103,27 @@ Employee* employee_new()
     return newEmployee;
 }
 
-/*Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr)
+Employee* employee_newParametros(char* idStr, char* nombreStr, char* horasTrabajadasStr, char* sueldo)
 {
-    int todoOK;
-    Employee* newEmployee = (Employee*) malloc(sizeof(Employee));
+    int todoOK = -1;
+
+    Employee* newEmployee = employee_new();
+
     if (newEmployee != NULL)
     {
-        // otro if validando un id distinto de negativo (setID)
-        // otro if validando si pudo escribir un numbro (setNombre)
-        // otro if para validar las horas trabajadas
-        // otro if para validar el sueldo (setSueldo) (agregar este parametro al a funciom)
-        // usa atoi y esas boludeces
-        todoOK = 1;
+        employee_setId(newEmployee, atoi(idStr));
+        employee_setNombre(newEmployee, nombreStr);
+        employee_setHorasTrabajadas(newEmployee, atoi(horasTrabajadasStr));
+        employee_setSueldo(newEmployee, atoi(sueldo));
 
-        if (todoOK == 0)
-        {
-            free(newEmployee);
-            newEmployee == NULL;
-        }
+        todoOK = 0;
     }
 
+    if (todoOK == -1)
+    {
+        free(newEmployee);
+        newEmployee = NULL;
+    }
 
     return newEmployee;
-}*/
+}

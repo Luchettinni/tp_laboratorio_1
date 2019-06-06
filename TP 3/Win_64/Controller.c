@@ -21,34 +21,26 @@
  */
 int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
 {
-    int error;
+    int error = 1;
     int cant;
-    int contador = 0;
-
     char buffer[4][20];
 
     FILE* file;
-
-    Employee* auxEmp = employee_new();
-
     file = fopen(path, "r");
 
     if (file != NULL)
     {
+        fscanf(file, "%[^,],%[^,],%[^,],%[^\n]\n", buffer[0], buffer[1], buffer[2], buffer[3]); // LECTURA FANTASMA
+        ll_clear(pArrayListEmployee); // CON ESTO BORRO LA LISTA EN CASO DE QUE CONTENGA DATOS PREVIOS
+
         while( !feof(file) )
         {
             cant = fscanf(file, "%[^,],%[^,],%[^,],%[^\n]\n", buffer[0], buffer[1], buffer[2], buffer[3]);
-            employee_setId(auxEmp, atoi(buffer[0]) );
-            employee_setSueldo(auxEmp, atoi(buffer[3]) );
-
-            ll_add(pArrayListEmployee, auxEmp);
-
 
             if ( cant < 4 )
             {
                 if(feof(file))
                 {
-                    printf("funco xd\n");
                     break;
                 }
 				else
@@ -57,13 +49,24 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
 					break;
 				}
             }
+
+            Employee* auxEmp = employee_new();
+
+            if (auxEmp != NULL)
+            {
+                auxEmp = employee_newParametros(buffer[0], buffer[1], buffer[2], buffer[3]);
+                ll_add(pArrayListEmployee, auxEmp);
+            }
+            else
+            {
+                printf("ERROR: no se pudo conseguir espacio para realizar el cargado\n\n");
+                ll_clear(pArrayListEmployee);
+                break;
+            }
         }
+
         error = 0;
         fclose(file);
-    }
-    else
-    {
-        error = 1;
     }
 
     return error;
@@ -126,7 +129,23 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_ListEmployee(LinkedList* pArrayListEmployee)
 {
-    return 1;
+    int error = 1;
+    int len = ll_len(pArrayListEmployee);
+    Employee* empleado = employee_new();
+
+
+    if ( empleado != NULL && len != 0)
+    {
+        printf("\n ID   | NOMBRE          | HORAS TRABAJADAS | SUELDO\n");
+        for (int i = 0; i < len; i++)
+        {
+            empleado = ll_get(pArrayListEmployee, i);
+            printf(" %04d | %-15s | %-16d | %-6d \n", empleado->id, empleado->nombre, empleado->horasTrabajadas, empleado->sueldo);
+        }
+        error = 0;
+    }
+
+    return error;
 }
 
 /** \brief Ordenar empleados
@@ -150,7 +169,37 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
 {
-    return 1;
+
+    int error = 1;
+    int len = ll_len(pArrayListEmployee);
+
+    Employee* empleado = employee_new();
+
+    FILE* file;
+
+    if ( len != 0 )
+    {
+        file = fopen(path, "w");
+    }
+    else
+    {
+        file = NULL;
+    }
+
+    if ( file != NULL && empleado != NULL && pArrayListEmployee != NULL)
+    {
+        fprintf(file,"id,nombre,horasTrabajadas,sueldo\n");
+        for (int i = 0; i < len; i++)
+        {
+            empleado = ll_get(pArrayListEmployee, i);
+            fprintf(file, "%d,%s,%d,%d\n", empleado->id, empleado->nombre, empleado->horasTrabajadas, empleado->sueldo);
+        }
+        error = 0;
+    }
+
+    fclose(file);
+
+    return error;
 }
 
 /** \brief Guarda los datos de los empleados en el archivo data.csv (modo binario).
