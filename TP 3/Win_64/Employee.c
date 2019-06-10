@@ -40,7 +40,7 @@ int employee_setSueldo(Employee* this,int sueldo)
 {
     int todoOK = 1;
 
-    if ( this != NULL && sueldo > 0 && sueldo < 100000 )
+    if ( this != NULL && sueldo > 8000 && sueldo < 80000 )
     {
         this->sueldo = sueldo;
         todoOK = 0;
