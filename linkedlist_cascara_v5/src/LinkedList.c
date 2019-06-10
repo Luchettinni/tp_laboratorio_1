@@ -94,10 +94,47 @@ Node* test_getNode(LinkedList* this, int nodeIndex)
 static int addNode(LinkedList* this, int nodeIndex,void* pElement)
 {
     int returnAux = -1;
-    if ( this != NULL )
+
+    Node* newNode = NULL;
+    Node* auxNode = NULL;
+
+    if ( this != NULL && nodeIndex >= 0 && nodeIndex <= ll_len(this) && pElement != NULL)
     {
         Node* newNode = (Node*) malloc(sizeof(Node));
-        getNode(this, ll_len(this)) = newNode;
+
+        if ( newNode != NULL )
+        {
+            newNode->pElement = pElement;
+            newNode->pNextNode = NULL;
+        }
+
+        if (nodeIndex == 0)
+        {
+            this->pFirstNode = newNode;
+            newNode->pNextNode = getNode(this, nodeIndex);
+        }
+        else
+        {
+            auxNode = getNode(this, nodeIndex -1);
+
+             newNode->pNextNode = auxNode->pNextNode;
+             auxNode->pNextNode = newNode;
+        }
+
+// --------------------------------------------------------------------------
+
+        if ( auxNode == NULL )
+        {
+            this->pFirstNode = newNode;
+        }
+        else
+        {
+                newNode->pNextNode = auxNode->pNextNode;
+                auxNode->pNextNode = newNode;
+        }
+
+        this->size = this->size + 1;
+        returnAux = 0;
     }
 
     return returnAux;
