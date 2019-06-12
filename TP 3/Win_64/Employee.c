@@ -23,6 +23,19 @@ int employee_setNombre(Employee* this,char* nombre)
     return todoOk;
 }
 
+int employee_getNombre(Employee* this,char* nombre)
+{
+    int todoOk = 0;
+
+    if( this != NULL && strlen(nombre) < 128 && strlen(nombre) > 0 )
+    {
+        strcpy(this->nombre, nombre);
+        todoOk = 1;
+    }
+
+    return todoOk;
+}
+
 int employee_setHorasTrabajadas(Employee* this,int horasTrabajadas)
 {
     int todoOk = 0;
@@ -30,6 +43,19 @@ int employee_setHorasTrabajadas(Employee* this,int horasTrabajadas)
     if( this != NULL && horasTrabajadas >0 && horasTrabajadas <=350 )
     {
         this->horasTrabajadas = horasTrabajadas;
+        todoOk = 1;
+    }
+
+    return todoOk;
+}
+
+int employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas)
+{
+    int todoOk = 0;
+
+    if( this != NULL && horasTrabajadas != NULL )
+    {
+        *horasTrabajadas = this->horasTrabajadas;
         todoOk = 1;
     }
 
@@ -55,8 +81,8 @@ int employee_getSueldo(Employee* this,int* sueldo)
 
     if ( this != NULL || sueldo != NULL)
     {
-        todoOK = 1;
         *sueldo = this->sueldo;
+        todoOK = 1;
     }
 
     return todoOK;
@@ -66,7 +92,7 @@ int employee_setId(Employee* this,int id)
 {
     int todoOK = 1;
 
-    if ( this != NULL && id > 0 && id < 100000 )
+    if ( this != NULL && id > 0 )
     {
         this->id = id;
         todoOK = 0;

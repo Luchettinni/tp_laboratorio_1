@@ -77,6 +77,8 @@ int main()
                 break;
 
             case 4:
+                controller_editEmployee(listaEmpleados);
+                system("pause");
                 break;
 
             case 5:
@@ -134,6 +136,7 @@ int main()
                 break;
 
             case 10:
+                ll_deleteLinkedList(listaEmpleados);
                 printf("\nSaliendo...\n\n");
                 system("pause");
                 break;

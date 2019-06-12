@@ -91,7 +91,6 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
             if(empleado->id > max || i == 0)
             {
                 max = empleado->id;
-
             }
         }
 
@@ -117,6 +116,76 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_editEmployee(LinkedList* pArrayListEmployee)
 {
+    int id = -1;
+    int opcion = 0;
+    Employee* employee = NULL;
+
+    if ( pArrayListEmployee != NULL )
+    {
+        printf("\nIngrese el id del empleado que desea modificar: ");
+        scanf("%d", &id);
+        fflush(stdin);
+
+        do
+        {
+            for ( int i = 0; i < ll_len(pArrayListEmployee); i++)
+            {
+                employee = ll_get(pArrayListEmployee, id-1);
+                if ( employee != NULL && employee->id == id)
+                {
+                    break;
+                }
+            }
+
+            if (employee != NULL)
+            {
+                system("cls");
+                printf("---------- NOMINA DE EMPLEADOS ---------- // MODIFICAR EMPLEADO\n\n");
+                printf("Modificar al empleado... id: %d | nombre: %s | sueldo: %d | horas trabajadas: %d \n\n", id, employee->nombre, employee->sueldo, employee->horasTrabajadas);
+                printf("1) Modificar nombre\n");
+                printf("2) Modificar sueldo\n");
+                printf("3) Modificar horas trabajadas\n");
+                printf("4) salir");
+
+                printf("\n\nque desea hacer?: ");
+                scanf("%d", &opcion);
+
+                switch(opcion)
+                {
+                    case 1:
+                        input_getName(employee->nombre,"Ingrese el nuevo nombre del empleado: ", "ERROR: nombre muy corto o demasiado largo",2,15);
+                        break;
+
+                    case 2:
+                        input_getInt(&employee->sueldo, "Ingrese sueldo del empleado: ", "ERROR: el sueldo excede el rango establecido por el programa ", 7000, 100000);
+                        break;
+
+                    case 3:
+                        input_getInt(&employee->horasTrabajadas, "ingrese horas trabajadas: ", "ERROR: las horas trabajadas exeden el rango establecido por el programa", 1,350);
+                        break;
+
+                    case 4:
+                        printf("\nvolviendo... \n\n");
+                        break;
+
+                    default:
+                        printf("\nERROR: comando desconocido...\n\n");
+                        system("pause");
+                        break;
+                }
+
+                fflush(stdin);
+            }
+            else
+            {
+                printf("\nERROR: no se encontro ningun empleado con ID: %d\n\n", id);
+                opcion = 4;
+            }
+
+        } while (opcion != 4);
+    }
+
+
     return 1;
 }
 

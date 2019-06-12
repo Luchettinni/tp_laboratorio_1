@@ -72,7 +72,7 @@ int parser_EmployeeFromBinary(FILE* pFile , LinkedList* pArrayListEmployee)
     int error = 1;
     int cant;
 
-    if (pFile != NULL)
+    if (pFile != NULL && pArrayListEmployee != NULL)
     {
         ll_clear(pArrayListEmployee);
 
@@ -105,10 +105,9 @@ int parser_EmployeeFromBinary(FILE* pFile , LinkedList* pArrayListEmployee)
                 break;
             }
         }
-
         error = 0;
         fclose(pFile);
     }
 
-    return 1;
+    return error;
 }
