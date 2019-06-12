@@ -4,6 +4,14 @@
 
 #include "LinkedList.h"
 
+#ifndef PARSER_H_INCLUDED
+#define PARSER_H_INCLUDED
+
+#include "parser.h"
+
+#endif // PARSER_H_INCLUDED
+
+
 #ifndef EMPLOYEE_H_INCLUDED
 #define EMPLOYEE_H_INCLUDED
 
@@ -30,53 +38,12 @@
  */
 int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
 {
-    int error = 1;
-    int cant;
-    char buffer[4][20];
+    int error;
 
     FILE* file;
     file = fopen(path, "r");
 
-    if (file != NULL)
-    {
-        fscanf(file, "%[^,],%[^,],%[^,],%[^\n]\n", buffer[0], buffer[1], buffer[2], buffer[3]); // LECTURA FANTASMA
-        ll_clear(pArrayListEmployee); // CON ESTO BORRO LA LISTA EN CASO DE QUE CONTENGA DATOS PREVIOS
-
-        while( !feof(file) )
-        {
-            cant = fscanf(file, "%[^,],%[^,],%[^,],%[^\n]\n", buffer[0], buffer[1], buffer[2], buffer[3]);
-
-            if ( cant < 4 )
-            {
-                if(feof(file))
-                {
-                    break;
-                }
-				else
-				{
-					printf("No leyo el ultimo registro");
-					break;
-				}
-            }
-
-            Employee* auxEmp = employee_new();
-
-            if (auxEmp != NULL)
-            {
-                auxEmp = employee_newParametros(buffer[0], buffer[1], buffer[2], buffer[3]);
-                ll_add(pArrayListEmployee, auxEmp);
-            }
-            else
-            {
-                printf("ERROR: no se pudo conseguir espacio para realizar el cargado\n\n");
-                ll_clear(pArrayListEmployee);
-                break;
-            }
-        }
-
-        error = 0;
-        fclose(file);
-    }
+    error = parser_EmployeeFromText(file, pArrayListEmployee);
 
     return error;
 }
@@ -90,49 +57,13 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
  */
 int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 {
-    int error = 1;
-    int cant;
+    int error;
 
     FILE* file;
     file = fopen(path, "rb");
 
-    if (file != NULL)
-    {
-        ll_clear(pArrayListEmployee);
+    error = parser_EmployeeFromBinary(file,pArrayListEmployee);
 
-        while( !feof(file) )
-        {
-            Employee* auxEmp = employee_new();
-            cant = fread(auxEmp,sizeof(Employee),1,file);
-
-            if ( cant != 1 )
-            {
-               if(feof(file))
-                {
-                    break;
-                }
-                else
-                {
-                    printf("No leyo el ultimo registro");
-                    break;
-                }
-            }
-
-            if (auxEmp != NULL)
-            {
-                ll_add(pArrayListEmployee, auxEmp);
-            }
-            else
-            {
-                printf("ERROR: no se pudo conseguir espacio para realizar el cargado\n\n");
-                ll_clear(pArrayListEmployee);
-                break;
-            }
-        }
-
-        error = 0;
-        fclose(file);
-    }
 
     return error;
 }
@@ -147,7 +78,7 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 int controller_addEmployee(LinkedList* pArrayListEmployee)
 {
     int error = 1;
-    int max = 1;
+    int max = 0;
     int len = ll_len(pArrayListEmployee);
 
     Employee* empleado = employee_new();
@@ -160,14 +91,16 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
             if(empleado->id > max || i == 0)
             {
                 max = empleado->id;
+
             }
         }
 
-        empleado = employee_new();
         max = max + 1;
 
+        empleado = employee_new();
+
         employee_setId(empleado, max);
-        input_getString(empleado->nombre,"Ingrese nombre del empleado: ", "ERROR: nombre muy corto o demasiado largo",2,15);
+        input_getName(empleado->nombre,"Ingrese nombre del empleado: ", "ERROR: nombre muy corto o demasiado largo",2,15);
         input_getInt(&empleado->horasTrabajadas, "ingrese horas trabajadas: ", "ERROR: las horas trabajadas exeden el rango establecido por el programa", 1,350);
         input_getInt(&empleado->sueldo, "Ingrese sueldo del empleado: ", "ERROR: el sueldo excede el rango establecido por el programa ", 7000, 100000);
         ll_add(pArrayListEmployee, empleado);
@@ -196,25 +129,27 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_removeEmployee(LinkedList* pArrayListEmployee)
 {
-    int error = 1;
-    int index = -1;
-    int len = ll_len(pArrayListEmployee);
-    Employee* empleado = employee_new();
-
+    int error = -1;
 
     int id;
-    printf("Ingrese el id del empleado que desea dar de baja: ");
+    int len = ll_len(pArrayListEmployee);
+
+    Employee* empleado = NULL;
+
+    printf("\nIngrese el id del empleado que desea dar de baja: ");
     scanf("%d", &id);
 
     for(int i = 0; i < len; i++ )
     {
         empleado = ll_get(pArrayListEmployee, i);
-        if(empleado->id == id)
+
+        if( id == empleado->id )
         {
-            index = i;
+            ll_remove(pArrayListEmployee, i);
+            error = 0;
+            break;
         }
     }
-    ll_remove(pArrayListEmployee, index);
 
     return error;
 }
@@ -256,7 +191,34 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_sortEmployee(LinkedList* pArrayListEmployee)
 {
-    return 1;
+    int error = 1;
+    int len = ll_len(pArrayListEmployee);
+
+    Employee* empleado = employee_new();
+    Employee* empleadoAux = employee_new();
+
+    printf("\nordenando... (esto puede tardar unos segundos...)\n");
+
+    if ( empleado != NULL && empleadoAux != NULL && len != 0)
+    {
+        for (int i = 0; i < len; i++)
+        {
+            for ( int j = i + 1; j < len; j++)
+            {
+                empleado = ll_get(pArrayListEmployee, i);
+                empleadoAux = ll_get(pArrayListEmployee, j);
+                if ( strcmp(empleado->nombre, empleadoAux->nombre) > 0 )
+                {
+                    ll_set(pArrayListEmployee,j, empleado);
+                    ll_set(pArrayListEmployee,i, empleadoAux);
+                }
+            }
+        }
+        error = 0;
+        printf("\nse ordenaron los empleados correctamente!\n\n");
+    }
+
+    return error;
 }
 
 /** \brief Guarda los datos de los empleados en el archivo data.csv (modo texto).

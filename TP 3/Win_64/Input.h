@@ -60,3 +60,5 @@ void input_getString(char* input, char message[], char eMessage[], int lowLimit,
  * \return void
  */
 void input_getAnswer (char* respuesta, char mensaje[]);
+
+void input_getName(char* input, char message[], char eMessage[], int lowLimit, int hiLimit);

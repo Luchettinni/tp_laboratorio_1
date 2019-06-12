@@ -11,7 +11,7 @@
 
 #endif // Input_H_INCLUDED
 
-// BIBLIOTECAS INPUT, POR LUCHETTINNI-DEV ( VERSION 4.0 )
+// BIBLIOTECAS INPUT, POR LUCCHETTINNI ( VERSION 4.1 )
 
 void getInt(int* input, char message[], char eMessage[], int lowLimit, int hiLimit)
 {

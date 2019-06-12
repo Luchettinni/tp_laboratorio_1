@@ -26,6 +26,7 @@ int initEmployees(sEmployee* listOfEmployees, int lenght)
         {
             (listOfEmployees+i)->isEmpty = 1;
         }
+        error = 0;
     }
 
     return error;
@@ -97,7 +98,7 @@ int sortEmployees(sEmployee* employee, int lenght, int order)
                 {
                     if ( stricmp((employee+i)->name, (employee+j)->name) > 0 )
                     {
-                        auxEmp = employee+i;
+                        *auxEmp = *(employee+i);
                         *(employee+i) = *(employee+j);
                         *(employee+j) = *auxEmp;
                     }
@@ -111,22 +112,19 @@ int sortEmployees(sEmployee* employee, int lenght, int order)
                 }
                 else // si el orden es decendente...
                 {
-
                     if ( stricmp( (employee+i)->name, (employee+j)->name) < 0)
                     {
-                        printf("%x\n", auxEmp);
-                        auxEmp = employee+i;
+                        *auxEmp = *(employee+i);
                         *(employee+i) = *(employee+j);
                         *(employee+j) = *auxEmp;
                     }
 
                     if ( (employee+i)->sector < (employee+j)->sector)
                     {
-                        auxEmp = employee+i;
+                        *auxEmp = *(employee+i);
                         *(employee+i) = *(employee+j);
                         *(employee+j) = *auxEmp;
                     }
-
                 }
             }
         }
@@ -178,7 +176,7 @@ int findEmployeeById(sEmployee* employee, int lenght,int id)
     {
         for (int i = 0; i < lenght; i++)
         {
-            if ( employee[i].id == id && employee[i].isEmpty == 0)
+            if ( (employee+i)->id == id && (employee+i)->isEmpty == 0)
             {
                 indice = i;
             }

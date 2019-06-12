@@ -140,40 +140,41 @@
 	"Employee.h"
 	"string.h"
 
-1559870759 source:c:\users\apyr\desktop\tp_laboratorio_1\tp 3\win_64\employee.c
+1560196827 source:c:\users\apyr\desktop\tp_laboratorio_1\tp 3\win_64\employee.c
 	<stdlib.h>
 	<stdio.h>
 	"string.h"
 	"Employee.h"
 
-1559787061 c:\users\apyr\desktop\tp_laboratorio_1\tp 3\win_64\employee.h
+1560196827 c:\users\apyr\desktop\tp_laboratorio_1\tp 3\win_64\employee.h
 
-1559872017 source:c:\users\apyr\desktop\tp_laboratorio_1\tp 3\win_64\main.c
+1560299340 source:c:\users\apyr\desktop\tp_laboratorio_1\tp 3\win_64\main.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Controller.h"
 	"Employee.h"
 
-1559769269 c:\users\apyr\desktop\tp_laboratorio_1\tp 3\win_64\linkedlist.h
+1560196827 c:\users\apyr\desktop\tp_laboratorio_1\tp 3\win_64\linkedlist.h
 
-1559871034 c:\users\apyr\desktop\tp_laboratorio_1\tp 3\win_64\controller.h
+1560196827 c:\users\apyr\desktop\tp_laboratorio_1\tp 3\win_64\controller.h
 
-1559759860 source:c:\users\apyr\desktop\tp_laboratorio_1\tp 3\win_64\parser.c
+1560217463 source:c:\users\apyr\desktop\tp_laboratorio_1\tp 3\win_64\parser.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Employee.h"
 
-1559871992 source:c:\users\apyr\desktop\tp_laboratorio_1\tp 3\win_64\controller.c
+1560299353 source:c:\users\apyr\desktop\tp_laboratorio_1\tp 3\win_64\controller.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
 	"LinkedList.h"
+	"parser.h"
 	"Employee.h"
 	"Input.h"
 
-1559865091 source:c:\users\apyr\desktop\tp_laboratorio_1\tp 3\win_64\input.c
+1560296512 source:c:\users\apyr\desktop\tp_laboratorio_1\tp 3\win_64\input.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -181,5 +182,7 @@
 	<conio.h>
 	"Input.h"
 
-1559864936 c:\users\apyr\desktop\tp_laboratorio_1\tp 3\win_64\input.h
+1560296295 c:\users\apyr\desktop\tp_laboratorio_1\tp 3\win_64\input.h
+
+1560196827 c:\users\apyr\desktop\tp_laboratorio_1\tp 3\win_64\parser.h
 

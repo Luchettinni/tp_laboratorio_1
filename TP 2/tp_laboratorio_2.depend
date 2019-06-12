@@ -23,24 +23,24 @@
 
 1558312153 c:\users\apyr\desktop\tp_laboratorio_2\tp_laboratorio_2\input.h
 
-1559698697 source:c:\users\apyr\desktop\tp_laboratorio_1\tp 2\employee.c
+1560305108 source:c:\users\apyr\desktop\tp_laboratorio_1\tp 2\employee.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"Employee.h"
 	"Input.h"
 
-1559697966 c:\users\apyr\desktop\tp_laboratorio_1\tp 2\employee.h
+1560305108 c:\users\apyr\desktop\tp_laboratorio_1\tp 2\employee.h
 
 1558315858 c:\users\apyr\desktop\tp_laboratorio_1\tp 2\input.h
 
-1559699404 source:c:\users\apyr\desktop\tp_laboratorio_1\tp 2\main.c
+1560301206 source:c:\users\apyr\desktop\tp_laboratorio_1\tp 2\main.c
 	<stdio.h>
 	<stdlib.h>
 	"Employee.h"
 	"Input.h"
 
-1558847265 source:c:\users\apyr\desktop\tp_laboratorio_1\tp 2\input.c
+1560283333 source:c:\users\apyr\desktop\tp_laboratorio_1\tp 2\input.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -70,31 +70,6 @@
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
-	"Employee.h"
-	"Input.h"
-
-1559735150 source:c:\users\alumno\desktop\tp_laboratorio_1\tp 2\employee.c
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	"Employee.h"
-	"Input.h"
-
-1559734388 c:\users\alumno\desktop\tp_laboratorio_1\tp 2\employee.h
-
-1559734388 c:\users\alumno\desktop\tp_laboratorio_1\tp 2\input.h
-
-1559734388 source:c:\users\alumno\desktop\tp_laboratorio_1\tp 2\input.c
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	<ctype.h>
-	<conio.h>
-	"Input.h"
-
-1559734951 source:c:\users\alumno\desktop\tp_laboratorio_1\tp 2\main.c
-	<stdio.h>
-	<stdlib.h>
 	"Employee.h"
 	"Input.h"
 

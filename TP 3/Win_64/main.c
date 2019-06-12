@@ -80,8 +80,17 @@ int main()
                 break;
 
             case 5:
-                controller_removeEmployee(listaEmpleados);
+                if ( controller_removeEmployee(listaEmpleados) )
+                {
+                    printf("\nERROR: no se logro encontrar el id introducido.\n\n");
+                }
+                else
+                {
+                    printf("\nse dio de baja al empleado satisfactoriamente!\n\n");
+                }
+                system("pause");
                 break;
+
 
             case 6:
                 if ( controller_ListEmployee(listaEmpleados) )
@@ -96,6 +105,8 @@ int main()
                 break;
 
             case 7:
+                controller_sortEmployee(listaEmpleados);
+                system("pause");
                 break;
 
             case 8:

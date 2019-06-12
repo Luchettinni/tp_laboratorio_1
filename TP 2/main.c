@@ -17,30 +17,38 @@
 
 #define TAM_EMPLEADOS 100
 
-// REVISAR SORT, NO ESTOY PASANDO DIRECCIONES DE MEMORIA, UN CAPO KEVIN xddxdxd
-
 int main()
 {
     sEmployee* employee = (sEmployee*) malloc( TAM_EMPLEADOS * sizeof(sEmployee) ); // busco espacio en memoria para 100 empleados
-
     sEmployee* employeeToLoad = (sEmployee*) malloc( sizeof(sEmployee) );
 
-    if (employee == NULL)
+    if ( employee == NULL || employeeToLoad == NULL )
     {
-        printf("ERROR: no se pudo conseguir espacio para trabajar con datos");
+        printf("ERROR: no se pudo conseguir espacio para trabajar con los datos\n\n");
         system("pause");
-        exit(EXIT_FAILURE);
+        system("cls");
     }
 
-    initEmployees(employee, TAM_EMPLEADOS);
-    initEstruct(employee, TAM_EMPLEADOS);
+    if ( initEmployees(employee, TAM_EMPLEADOS) )
+    {
+        printf("ERROR: Ocurrio un error en la inicializacion...\n\n");
+        system("pause");
+        system("cls");
+    }
+
+    if ( initEstruct(employee, TAM_EMPLEADOS) )
+    {
+        printf("ERROR: Ocurrio un error en hardcodeo ...\n\n");
+        system("pause");
+    }
+
 
     int idIncremental;
     int cantidadDeEmpleados;
 
     int opcion = 0;
 
-    int id;
+    int id; // ESTA VARIABLE LA USO PARA QUE EL USUARIO INGRESE EL LEGAJO DEL EMPLEADO A MODIFICAR/ELIMINAR
     int indice;
 
     findLastId(employee,TAM_EMPLEADOS, &idIncremental);
@@ -49,6 +57,7 @@ int main()
     {
         system("cls");
         findLastId(employee,TAM_EMPLEADOS, &cantidadDeEmpleados);
+
         switch (menuPrincipal())
         {
             case 1:
@@ -58,9 +67,14 @@ int main()
                 getInt( &employeeToLoad->sector, "Ingrese el sector: ", "ERROR: ese sector no existe...", 1,5);
                 idIncremental++;
 
-                addEmployee(employee, TAM_EMPLEADOS, idIncremental, employeeToLoad->name, employeeToLoad->lastName, employeeToLoad->salary, employeeToLoad->sector );
-
-                printf("\n\nalta realizada correctamente\n\n");
+                if ( (addEmployee(employee, TAM_EMPLEADOS, idIncremental, employeeToLoad->name, employeeToLoad->lastName, employeeToLoad->salary, employeeToLoad->sector) ) >= 0 )
+                {
+                    printf("\n\nalta realizada correctamente\n\n");
+                }
+                else
+                {
+                    printf("\n\nERROR: no se encontro espacio para añadir un nuevo empleado...\n\n");
+                }
                 system("pause");
                 break;
 
@@ -83,7 +97,6 @@ int main()
                             {
                                 case 1:
                                     getString( (employee+indice)->name, "Ingrese su nombre: ", "Error, el nombre es demasiado corto o demasiado largo", 2, 51 );
-                                    system("pause");
                                     break;
 
                                 case 2:
@@ -133,7 +146,7 @@ int main()
                 break;
 
             case 4:
-                if ( cantidadDeEmpleados != 0)
+                if ( cantidadDeEmpleados != 0 )
                 {
                     do
                     {
@@ -141,8 +154,15 @@ int main()
                         switch(menuDeInformes())
                         {
                             case 1:
-                                sortEmployees(employee, TAM_EMPLEADOS, 0);
-                                printEmployees(employee, TAM_EMPLEADOS);
+                                if ( sortEmployees(employee, TAM_EMPLEADOS, 0) )
+                                {
+                                    printf("\nERROR: no se pudieron ordenar los empleados...\n\n");
+                                }
+
+                                if ( printEmployees(employee, TAM_EMPLEADOS) )
+                                {
+                                    printf("ERROR: no se pudieron listar los empleados...\n\n");
+                                }
                                 system("pause");
                                 break;
 
@@ -156,6 +176,7 @@ int main()
                                 break;
 
                             default:
+                                printf("\nComando desconocido... ");
                                 system("pause");
                                 break;
                         }
@@ -170,9 +191,13 @@ int main()
 
             case 5:
                 opcion = 1;
+                printf("\nSaliendo... ");
+                system("pause");
                 break;
 
             default:
+                printf("\nComando desconocido... ");
+                system("pause");
                 break;
         }
     } while (opcion != 1);

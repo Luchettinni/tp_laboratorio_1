@@ -55,10 +55,10 @@ int ll_len(LinkedList* this)
 static Node* getNode(LinkedList* this, int nodeIndex)
 {
     Node* pNode = NULL;
-
-    if ( this != NULL && nodeIndex >= 0 && nodeIndex < ll_len(this) )
+    if ( this != NULL && nodeIndex >= 0 && nodeIndex < ll_len(this))
     {
         pNode = this->pFirstNode;
+
         for (int i = 0; i < nodeIndex; i++)
         {
             pNode = pNode->pNextNode;
@@ -97,10 +97,10 @@ static int addNode(LinkedList* this, int nodeIndex,void* pElement)
 
     Node* newNode = NULL;
     Node* auxNode = NULL;
-
     if ( this != NULL && nodeIndex >= 0 && nodeIndex <= ll_len(this) && pElement != NULL)
     {
-        Node* newNode = (Node*) malloc(sizeof(Node));
+
+        newNode = (Node*) malloc(sizeof(Node));
 
         if ( newNode != NULL )
         {
@@ -108,32 +108,25 @@ static int addNode(LinkedList* this, int nodeIndex,void* pElement)
             newNode->pNextNode = NULL;
         }
 
-        if (nodeIndex == 0)
-        {
-            this->pFirstNode = newNode;
-            newNode->pNextNode = getNode(this, nodeIndex);
-        }
-        else
-        {
-            auxNode = getNode(this, nodeIndex -1);
-
-             newNode->pNextNode = auxNode->pNextNode;
-             auxNode->pNextNode = newNode;
-        }
-
-// --------------------------------------------------------------------------
+        auxNode = getNode(this, nodeIndex-1);
 
         if ( auxNode == NULL )
         {
+            printf("size anterior (SI NULL) %d\n", this->size);
+            newNode->pNextNode = this->pFirstNode;
             this->pFirstNode = newNode;
+            this->size++;
+            printf("size aumento %d\n\n", this->size);
         }
         else
         {
-                newNode->pNextNode = auxNode->pNextNode;
-                auxNode->pNextNode = newNode;
+            printf("size anterior (NO NULL) %d\n", this->size);
+            newNode->pNextNode = auxNode->pNextNode;
+            auxNode->pNextNode = newNode;
+            printf("size aumento %d\n\n", this->size);
+            this->size++;
         }
 
-        this->size = this->size + 1;
         returnAux = 0;
     }
 

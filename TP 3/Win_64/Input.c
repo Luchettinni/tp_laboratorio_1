@@ -118,3 +118,25 @@ void input_getAnswer (char* respuesta, char mensaje[])
         *respuesta = tolower(*respuesta);
     }
 }
+
+void input_getName(char* input, char message[], char eMessage[], int lowLimit, int hiLimit)
+{
+    fflush(stdin);
+    printf(message);
+
+    scanf("%s", input);
+    input = strlwr(input);
+    input[0] = toupper(input[0]);
+
+    while (strlen(input) < lowLimit || strlen(input) > hiLimit)
+    {
+        printf("\n");
+        printf(eMessage);
+        printf("\n\n");
+        printf(message);
+
+        scanf("%s", input);
+        input = strlwr(input);
+        input[0] = toupper(input[0]);
+    }
+}
