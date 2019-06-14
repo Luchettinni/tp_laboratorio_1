@@ -109,9 +109,8 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
 
 /** \brief Modificar datos de empleado
  *
- * \param path char*
  * \param pArrayListEmployee LinkedList*
- * \return int
+ * \return (-1) en caso de error o (0) si tuvo exito
  *
  */
 int controller_editEmployee(LinkedList* pArrayListEmployee)
@@ -193,9 +192,8 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 
 /** \brief Baja de empleado
  *
- * \param path char*
  * \param pArrayListEmployee LinkedList*
- * \return int
+ * \return (-1) en caso de error o (0) si tuvo exito
  *
  */
 int controller_removeEmployee(LinkedList* pArrayListEmployee)
@@ -234,9 +232,8 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 
 /** \brief Listar empleados
  *
- * \param path char*
  * \param pArrayListEmployee LinkedList*
- * \return int
+ * \return (1) en caso de error o (0) si tuvo exito
  *
  */
 int controller_ListEmployee(LinkedList* pArrayListEmployee)
@@ -245,8 +242,7 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
     int len = ll_len(pArrayListEmployee);
     Employee* empleado = employee_new();
 
-
-    if ( empleado != NULL && len != 0)
+    if ( pArrayListEmployee != NULL && empleado != NULL && len != 0)
     {
         printf("\n ID   | NOMBRE          | HORAS TRABAJADAS | SUELDO\n");
         for (int i = 0; i < len; i++)
@@ -262,9 +258,8 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
 
 /** \brief Ordenar empleados
  *
- * \param path char*
  * \param pArrayListEmployee LinkedList*
- * \return int
+ * \return (1) en caso de error o (0) si tuvo exito
  *
  */
 int controller_sortEmployee(LinkedList* pArrayListEmployee)
@@ -277,7 +272,7 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
 
     printf("\nordenando... (esto puede tardar unos segundos...)\n");
 
-    if ( empleado != NULL && empleadoAux != NULL && len != 0)
+    if ( pArrayListEmployee != NULL && empleado != NULL && empleadoAux != NULL && len != 0)
     {
         for (int i = 0; i < len; i++)
         {
@@ -293,7 +288,6 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
             }
         }
         error = 0;
-        printf("\nse ordenaron los empleados correctamente!\n\n");
     }
 
     return error;
@@ -301,9 +295,9 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
 
 /** \brief Guarda los datos de los empleados en el archivo data.csv (modo texto).
  *
- * \param path char*
+ * \param path es la ruta donde se encuentra el archivo con el que se trabajara
  * \param pArrayListEmployee LinkedList*
- * \return int
+ * \return retorna (-1) en caso de error o (0) si tuvo exito
  *
  */
 int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
@@ -311,12 +305,11 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
 
     int error = 1;
     int len = ll_len(pArrayListEmployee);
-
     Employee* empleado = employee_new();
 
     FILE* file;
 
-    if ( len != 0 )
+    if ( len >= 0 )
     {
         file = fopen(path, "w");
     }
@@ -343,9 +336,9 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
 
 /** \brief Guarda los datos de los empleados en el archivo data.csv (modo binario).
  *
- * \param path char*
+ * \param path es la ruta donde se encuentra el archivo con el que se trabajara
  * \param pArrayListEmployee LinkedList*
- * \return int
+ * \return retorna (-1) en caso de error o (0) si tuvo exito
  *
  */
 int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
@@ -356,7 +349,7 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
     FILE* file;
     Employee* empleado = employee_new();
 
-    if ( len != 0 )
+    if ( len >= 0 )
     {
         file = fopen(path, "wb");
     }

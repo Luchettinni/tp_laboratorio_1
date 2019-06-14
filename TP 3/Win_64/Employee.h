@@ -12,8 +12,6 @@ typedef struct
 Employee* employee_new();
 Employee* employee_newParametros(char* idStr, char* nombreStr, char* horasTrabajadasStr, char* sueldo);
 
-void employee_delete();
-
 int employee_setId(Employee* this,int id);
 int employee_getId(Employee* this,int* id);
 

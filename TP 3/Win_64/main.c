@@ -23,7 +23,6 @@ int main()
     int option = 0;
 
     LinkedList* listaEmpleados = ll_newLinkedList();
-    //listaEmpleados = NULL;
     do
     {
         system("cls");
@@ -114,7 +113,7 @@ int main()
             case 6:
                 if ( controller_ListEmployee(listaEmpleados) )
                 {
-                    printf("\nERROR: no se encontraron datos para listar...\n\n");
+                    printf("\nERROR: no se encontraron empleados para listar...\n\n");
                 }
                 else
                 {
@@ -124,7 +123,15 @@ int main()
                 break;
 
             case 7:
-                controller_sortEmployee(listaEmpleados);
+                if ( controller_sortEmployee(listaEmpleados) )
+                {
+                    printf("\nERROR: no se encontraron empleados para ordenar...\n\n");
+                }
+                else
+                {
+                    printf("\nse ordenaron los empleados correctamente!\n\n");
+                }
+
                 system("pause");
                 break;
 
