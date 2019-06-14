@@ -23,7 +23,7 @@ int main()
     int option = 0;
 
     LinkedList* listaEmpleados = ll_newLinkedList();
-
+    //listaEmpleados = NULL;
     do
     {
         system("cls");
@@ -51,7 +51,7 @@ int main()
                 }
                 else
                 {
-                    printf("\nse cargaron los datos satisfactoriamente!\n\n");
+                    printf("\nSe cargaron los datos satisfactoriamente!\n\n");
                 }
 
                 system("pause");
@@ -65,30 +65,47 @@ int main()
                 }
                 else
                 {
-                    printf("\nse cargaron los datos satisfactoriamente!\n\n");
+                    printf("\nSe cargaron los datos satisfactoriamente!\n\n");
                 }
 
                 system("pause");
                 break;
 
             case 3:
-                controller_addEmployee(listaEmpleados);
+
+                if ( controller_addEmployee(listaEmpleados) )
+                {
+                    printf("\nOcurrio un error al intentar cargar un empleado...\n\n");
+                }
+                else
+                {
+                    printf("\nSe realizo el alta correctamente!\n\n");
+                }
                 system("pause");
                 break;
 
             case 4:
-                controller_editEmployee(listaEmpleados);
+
+                if ( controller_editEmployee(listaEmpleados) )
+                {
+                    printf("\nOcurrio un error al intentar realizar esta operacion...\n\n");
+                }
+                else
+                {
+                    printf("\nSe realizo la modificacion correctamente!\n\n");
+                }
+
                 system("pause");
                 break;
 
             case 5:
-                if ( controller_removeEmployee(listaEmpleados) )
+                if ( controller_removeEmployee(listaEmpleados) == -1 )
                 {
-                    printf("\nERROR: no se logro encontrar el id introducido.\n\n");
+                    printf("\nERROR: ID inexistente // memoria insuficiente...\n\n");
                 }
                 else
                 {
-                    printf("\nse dio de baja al empleado satisfactoriamente!\n\n");
+                    printf("\nSe dio de baja al empleado satisfactoriamente!\n\n");
                 }
                 system("pause");
                 break;

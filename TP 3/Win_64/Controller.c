@@ -31,9 +31,9 @@
 // PARCIAL DE LABORATORIO UNA SEMANA ANTES POR QUE SON ALTOS PETES Y NO SE LA BANCAN 26/6/2019
 /** \brief Carga los datos de los empleados desde el archivo data.csv (modo texto).
  *
- * \param path char*
+ * \param path es la ruta donde se encuentra el archivo con el que se trabajara
  * \param pArrayListEmployee LinkedList*
- * \return int
+ * \return retorna (-1) en caso de error o (0) si tuvo exito
  *
  */
 int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
@@ -50,9 +50,9 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
 
 /** \brief Carga los datos de los empleados desde el archivo data.csv (modo binario).
  *
- * \param path char*
+ * \param path es la ruta donde se encuentra el archivo con el que se trabajara
  * \param pArrayListEmployee LinkedList*
- * \return int
+ * \return retorna (-1) en caso de error o (0) si tuvo exito
  *
  */
 int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
@@ -70,14 +70,13 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 
 /** \brief Alta de empleados
  *
- * \param path char*
  * \param pArrayListEmployee LinkedList*
- * \return int
+ * \return (-1) en caso de error o (0) si tuvo exito
  *
  */
 int controller_addEmployee(LinkedList* pArrayListEmployee)
 {
-    int error = 1;
+    int error = -1;
     int max = 0;
     int len = ll_len(pArrayListEmployee);
 
@@ -103,6 +102,7 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
         input_getInt(&empleado->horasTrabajadas, "ingrese horas trabajadas: ", "ERROR: las horas trabajadas exeden el rango establecido por el programa", 1,350);
         input_getInt(&empleado->sueldo, "Ingrese sueldo del empleado: ", "ERROR: el sueldo excede el rango establecido por el programa ", 7000, 100000);
         ll_add(pArrayListEmployee, empleado);
+        error = 0;
     }
     return error;
 }
@@ -116,6 +116,7 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_editEmployee(LinkedList* pArrayListEmployee)
 {
+    int error = -1;
     int id = -1;
     int opcion = 0;
     Employee* employee = NULL;
@@ -183,10 +184,11 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
             }
 
         } while (opcion != 4);
+        error = 0;
     }
 
 
-    return 1;
+    return error;
 }
 
 /** \brief Baja de empleado
@@ -205,18 +207,25 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 
     Employee* empleado = NULL;
 
-    printf("\nIngrese el id del empleado que desea dar de baja: ");
-    scanf("%d", &id);
-
-    for(int i = 0; i < len; i++ )
+    if ( pArrayListEmployee != NULL )
     {
-        empleado = ll_get(pArrayListEmployee, i);
+        printf("\nIngrese el id del empleado que desea dar de baja: ");
+        scanf("%d", &id);
 
-        if( id == empleado->id )
+        for(int i = 0; i < len; i++ )
         {
-            ll_remove(pArrayListEmployee, i);
-            error = 0;
-            break;
+            empleado = ll_get(pArrayListEmployee, i);
+
+            if( id == empleado->id )
+            {
+                ll_remove(pArrayListEmployee, i);
+                error = 0;
+                break;
+            }
+            else
+            {
+                error = -1;
+            }
         }
     }
 

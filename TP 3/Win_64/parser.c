@@ -5,18 +5,18 @@
 
 /** \brief Parsea los datos los datos de los empleados desde el archivo data.csv (modo texto).
  *
- * \param path char*
+ * \param pFile es el archivo con el que se realizara la carga
  * \param pArrayListEmployee LinkedList*
- * \return int
+ * \return retorna (-1) si no tuvo exito o (0) si tuvo exito
  *
  */
 int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
 {
-    int error = 1;
+    int error = -1;
     int cant;
     char buffer[4][20];
 
-    if (pFile != NULL)
+    if (pFile != NULL && pArrayListEmployee != NULL)
     {
         fscanf(pFile, "%[^,],%[^,],%[^,],%[^\n]\n", buffer[0], buffer[1], buffer[2], buffer[3]); // LECTURA FANTASMA
         ll_clear(pArrayListEmployee); // CON ESTO BORRO LA LISTA EN CASO DE QUE CONTENGA DATOS PREVIOS
@@ -62,14 +62,14 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
 
 /** \brief Parsea los datos los datos de los empleados desde el archivo data.csv (modo binario).
  *
- * \param path char*
+ * \param pFile es el archivo con el que se realizara la carga
  * \param pArrayListEmployee LinkedList*
- * \return int
+ * \return retorna (-1) si no tuvo exito o (0) si tuvo exito
  *
  */
 int parser_EmployeeFromBinary(FILE* pFile , LinkedList* pArrayListEmployee)
 {
-    int error = 1;
+    int error = -1;
     int cant;
 
     if (pFile != NULL && pArrayListEmployee != NULL)
