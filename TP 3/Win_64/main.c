@@ -164,6 +164,13 @@ int main()
                 printf("\nSaliendo...\n\n");
                 system("pause");
                 break;
+
+            case 11:
+                printf("LEN: %d", ll_len(listaEmpleados) );
+                ll_clear(listaEmpleados);
+                printf("LEN 2: %d", ll_len(listaEmpleados) );
+                system("pause");
+                break;
         }
 
     } while( option != 10 );
