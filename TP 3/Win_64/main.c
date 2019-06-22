@@ -2,7 +2,20 @@
 #include <stdlib.h>
 #include "LinkedList.h"
 #include "Controller.h"
+
+#ifndef EMPLOYEE_H_INCLUDED
+#define EMPLOYEE_H_INCLUDED
+
 #include "Employee.h"
+
+#endif // EMPLOYEE_H_INCLUDED
+
+#ifndef INPUT_H_INCLUDED
+#define INPUT_H_INCLUDED
+
+#include "Input.h"
+
+#endif // INPUT_H_INCLUDED
 
 /****************************************************
     Menu:
@@ -23,6 +36,8 @@ int main()
     int option = 0;
 
     LinkedList* listaEmpleados = ll_newLinkedList();
+    //Employee* empleado = NULL;
+
     do
     {
         system("cls");
@@ -165,12 +180,32 @@ int main()
                 system("pause");
                 break;
 
-            case 11:
-                printf("LEN: %d", ll_len(listaEmpleados) );
-                ll_clear(listaEmpleados);
-                printf("LEN 2: %d", ll_len(listaEmpleados) );
+           /* case 11:
+
+                empleado = employee_new();
+
+                employee_setId(empleado, 6666);
+                input_getName(empleado->nombre,"Ingrese nombre del empleado: ", "ERROR: nombre muy corto o demasiado largo",2,15);
+                input_getInt(&empleado->horasTrabajadas, "ingrese horas trabajadas: ", "ERROR: las horas trabajadas exeden el rango establecido por el programa", 1,350);
+                input_getInt(&empleado->sueldo, "Ingrese sueldo del empleado: ", "ERROR: el sueldo excede el rango establecido por el programa ", 7000, 100000);
+
+                ll_push(listaEmpleados, 0, empleado);
+
+                empleado = employee_new();
+
+                employee_setId(empleado, 8888);
+                input_getName(empleado->nombre,"Ingrese nombre del empleado: ", "ERROR: nombre muy corto o demasiado largo",2,15);
+                input_getInt(&empleado->horasTrabajadas, "ingrese horas trabajadas: ", "ERROR: las horas trabajadas exeden el rango establecido por el programa", 1,350);
+                input_getInt(&empleado->sueldo, "Ingrese sueldo del empleado: ", "ERROR: el sueldo excede el rango establecido por el programa ", 7000, 100000);
+
+                ll_push(listaEmpleados, 0, empleado);
+
+                controller_ListEmployee(listaEmpleados);
                 system("pause");
-                break;
+
+
+                system("pause");
+                break;*/
         }
 
     } while( option != 10 );
